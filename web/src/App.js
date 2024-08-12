@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import fetchProducts from '../src/utils/fechDataProducts';
 import './App.css';
+import AppStyle from "./styles/AppStyle";
+import {ProductsContainer} from './styles/AppStyle';
 
 function App() {
 
@@ -24,13 +26,21 @@ function App() {
   }, []);
   
   return (
-    <div>
-    {loading ? (
-      <p>Carregando</p>
-    ) : (
-      products.map((element, index) => <p key={index}>{element.description}</p>)
-    )}
-  </div>
+    <AppStyle>
+      <ProductsContainer>
+        {loading ? (
+          <p>Carregando</p>
+        ) : (
+          products.map((element, index) => (
+          <div>
+            <img src={element.imgUrl} alt={element.description}/>
+            <p key={index}>{element.description}</p>
+            <p>{ `R$ ` + element.price}</p>
+          </div>
+          ))
+        )}
+      </ProductsContainer>
+    </AppStyle>
   );
 }
 
