@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import fetchProducts from '../src/utils/fechDataProducts';
 import './App.css';
 import AppStyle from "./styles/AppStyle";
-import {ProductsContainer} from './styles/AppStyle';
+import {ProductsContainer, ProductCard, ButtonContainer, ButtonStyle} from './styles/AppStyle';
+import Header from "./components/Header";
 
 function App() {
 
@@ -27,16 +28,21 @@ function App() {
   
   return (
     <AppStyle>
+      <Header />
       <ProductsContainer>
         {loading ? (
           <p>Carregando</p>
         ) : (
           products.map((element, index) => (
-          <div>
+          <ProductCard>
             <img src={element.imgUrl} alt={element.description}/>
             <p key={index}>{element.description}</p>
             <p>{ `R$ ` + element.price}</p>
-          </div>
+            <ButtonContainer>
+              <p>1</p>
+              <ButtonStyle>Adicionar ao carrinho</ButtonStyle>
+            </ButtonContainer>
+          </ProductCard>
           ))
         )}
       </ProductsContainer>
