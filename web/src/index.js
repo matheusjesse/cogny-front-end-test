@@ -3,13 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GlobalStyle from './styles/GlobalStyle'
+import GlobalStyle from './styles/GlobalStyle';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Cart from './pages/Cart/index';
+import { CartProvider } from '../src/utils/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
+    <Router>
+      <CartProvider>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </CartProvider>
+    </Router>
   </React.StrictMode>
 );
 
