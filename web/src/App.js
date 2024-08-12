@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
+import fetchProducts from '../src/utils/fechDataProducts';
 import './App.css';
 
 function App() {
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      setLoading(true);
+      try {
+        const products = await fetchProducts(); 
+        setProducts(products);
+      } catch (error) {
+        console.error("Erro ao carregar os produtos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+    {loading ? (
+      <p>Carregando</p>
+    ) : (
+      products.map((element, index) => <p key={index}>{element.description}</p>)
+    )}
+  </div>
   );
 }
 
