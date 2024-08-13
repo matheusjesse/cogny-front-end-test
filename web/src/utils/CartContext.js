@@ -7,6 +7,8 @@ export const CartProvider = ({ children }) => {
 
   const addItemToCart = (item) => {
     setCart([...cart, item]);
+    console.log(item)
+    console.log(cart)
   };
 
   const removeItemFromCart = (itemId) => {
