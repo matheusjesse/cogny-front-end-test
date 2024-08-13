@@ -14,6 +14,19 @@ const ProductsContainer = styled.div`
     justify-content: start;
     gap: 20px;
     width: 1097px;
+    margin-bottom: 44px;
+
+    @media (max-width: 1400px) { 
+        width: 1098px;
+    }
+    @media (max-width: 1124px) { 
+        width: 725px;
+    }
+    @media (max-width: 760px) { 
+        width: 353px;
+    }
+    
+
 `
 
 const ProductCard = styled.div`
