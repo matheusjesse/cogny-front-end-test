@@ -5,6 +5,7 @@ const HeaderStyle = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 22px 0px 22px 0px;
+    background-color: #191920;
     h1 {
         color: white;
     }

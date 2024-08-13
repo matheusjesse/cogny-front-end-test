@@ -1,62 +1,82 @@
-import React, { useContext,useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { CartContext } from '../../utils/CartContext';
+import CartContainer from './style';
+import Header from '../../components/Header';
 
 const Cart = () => {
-  const { cart, removeItemFromCart } = useContext(CartContext);
-  const [groupedCart, setGroupedCart] = useState([]);
+  const { cart, updateItemQuantity } = useContext(CartContext);
 
+  const handleQuantityChange = (id, newQuantity) => {
+    updateItemQuantity(id, newQuantity);
+  };
 
-  useEffect(() => {
-    const groupItems = (cartItems) => {
-        const grouped = cartItems.reduce((acc, item) => {
-          const existingItem = acc.find(product => product.id === item.id);
-          if (existingItem) {
-            existingItem.quantity += 1;
-            existingItem.totalPrice += item.price;
-          } else {
-            acc.push({ ...item, quantity: 1, totalPrice: item.price });
-          }
-          return acc;
-        }, []);
-        return grouped;
-      };
-  
-      const groupedItems = groupItems(cart);
-      setGroupedCart(groupedItems);
-  },[]);
+  const handleTotalPrice = () => {
+    let total = 0;
+    cart.forEach((item) => {
+      const itemPrice = item.price * item.quantity; 
+      total += itemPrice
+    })
+    return total.toFixed(2);
+  }
 
   return (
-    <div>
+    <>
+    <Header />
+    <CartContainer>
       {cart.length === 0 ? (
         <p>Seu carrinho está vazio.</p>
       ) : (
-        <table>
+        <div className="tableContainer">
+        <table >
             <thead>
                 <tr>
                 <th scope="col"></th>
-                <th scope="col">PRODUTO</th>
-                <th scope="col">QTD</th>
-                <th scope="col">PREÇO</th>
+                <th className="tableTitle" scope="col">PRODUTO</th>
+                <th className="tableTitle" scope="col">QTD</th>
+                <th className="tableTitle" scope="col">PREÇO</th>
                 </tr>
             </thead>
             <tbody>
-        {groupedCart.map((item) => (
+        {cart.map((item) => (
                 <tr key={item.id}>
-                    <th scope="row"><img src={item.imgUrl} alt={item.description} /></th>
-                    <td>
+                    <td className="tableRow"><img src={item.imgUrl} alt={item.description} /></td>
+                    <td className="tdDescription tableRow">
                         <div>
-                            <p>{item.description} </p>
-                            <p>({item.price})</p>
+                            <p className="foodDescription">{item.description} </p>
+                            <p className="foodUnitPrice">{`R$ ` + item.price}</p>
                         </div>
                     </td>
-                    <td>{item.quantity}</td>
-                    <td>{item.totalPrice.toFixed(2)}</td>
+                    <td className="tdQuantity tableRow">
+                    <label for="itemQTT">
+                    <input
+                      className="inputNumberQTT"
+                      type="number"
+                      id={`itemQTT-${item.id}`}
+                      name="itemQTT"
+                      min="0"
+                      max="100"
+                      value={item.quantity}
+                      onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
+                    />
+                    </label>
+                    </td>
+                    <td className="tdPrice tableRow">{`R$ ` + item.totalPrice.toFixed(2)}</td>
                 </tr>        
         ))}
         </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2" className="saleButtonContainer"><button className="finishSale">FINALIZAR PEDIDO</button></th>
+            <td></td>
+            <td></td>
+            <td className="totalValue"><span className="totalText">TOTAL </span><span className="totalNumber">{`R$ ` + handleTotalPrice()}</span></td>
+          </tr>
+        </tfoot>
         </table>
+        </div>
     )}
-    </div>
+    </CartContainer>
+    </>
   );
 };
 
