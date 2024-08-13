@@ -4,8 +4,8 @@ const HeaderStyle = styled.div`
     width: 1097px;
     display: flex;
     justify-content: space-between;
-    margin: 22px 0px 22px 0px;
-    background-color: #191920;
+    margin: 22px 12px 22px 12px;    
+
     h1 {
         color: white;
     }

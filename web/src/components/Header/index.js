@@ -10,8 +10,8 @@ function Header() {
     
   return (
     <HeaderStyle>
+        <h1>COGNYFOOD</h1>
         <button onClick={handleAddToCart}>
-            <h1>COGNYFOOD</h1>
             <CardContainer>
                 <p className="title-cart">Meu carrinho</p>
                 <p>3 items</p>
