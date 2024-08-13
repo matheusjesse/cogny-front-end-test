@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const HeaderStyle = styled.div`
-    width: 1097px;
+    width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
     margin: 22px 12px 22px 12px;    
 
     h1 {

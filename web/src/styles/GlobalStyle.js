@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {
     background-color: #191920;
+    display: flex;
+    justify-content: center;
   }
 
   a {
