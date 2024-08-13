@@ -6,6 +6,8 @@ const AppStyled = styled.div `
     justify-content: center;
     background-color: #191920;
     flex-wrap: wrap;
+    
+    
 `
 
 const ProductsContainer = styled.div`
@@ -15,6 +17,18 @@ const ProductsContainer = styled.div`
     gap: 20px;
     width: 1097px;
     margin-bottom: 44px;
+
+    .productPriceText {
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+
+    .productDescription {
+        margin-bottom: 8px;
+        margin-top: 24px;
+        font-weight: 700;
+        color: #333333;
+    }
 
     @media (max-width: 1400px) { 
         width: 1098px;
@@ -32,11 +46,13 @@ const ProductsContainer = styled.div`
 const ProductCard = styled.div`
 background-color: white;
 padding: 18px;
+border-radius: 6px;
 img {
     width: 260px;
     height: 240px;
     margin: 28px 28px 0px 28px;    
 }
+
 
 `
 const ButtonContainer = styled.div`

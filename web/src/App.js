@@ -38,8 +38,8 @@ function App() {
           products.map((element) => (
           <ProductCard key={element.id}>
             <img src={element.imgUrl} alt={element.description}/>
-            <p>{element.description}</p>
-            <p>{ `R$ ` + element.price}</p>
+            <p className="productDescription">{element.description}</p>
+            <p className="productPriceText">{ `R$ ` + element.price}</p>
             <ButtonContainer>
               <p>1</p>
               <ButtonStyle onClick={() => addItemToCart(element)}>Adicionar ao carrinho</ButtonStyle>
