@@ -7,6 +7,8 @@ display: flex;
 justify-content: center; 
 align-items: start;
 
+
+
 .finishSale {
     width: 163px;
     height: 42px;
@@ -85,10 +87,10 @@ text-align: center;
 
 .inputNumberQTT {
     height: 30px;
-    width: 51px;
+    width: 50px;
     border-radius: 4px;
     border: 1px solid #DDDDDD;
-    padding: 4px;
+    text-align: center;
 }
 
 .foodDescription {
