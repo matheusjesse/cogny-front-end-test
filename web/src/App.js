@@ -24,7 +24,6 @@ function App() {
         setLoading(false);
       }
     };
-
     loadProducts();
   }, []);
   

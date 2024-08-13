@@ -18,8 +18,6 @@ export const CartProvider = ({ children }) => {
   } else {
     setCart([...cart, { ...item, quantity: 1, totalPrice: item.price }]);
   }
-    console.log(item)
-    console.log(cart)
   };
 
   const updateItemQuantity = (id, newQuantity) => {
