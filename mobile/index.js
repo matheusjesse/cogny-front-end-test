@@ -1,7 +1,6 @@
 import { registerRootComponent } from 'expo';
 import { CartProvider } from './src/utils/CartContext';
-import App from './App';
-
+import { Router } from 'expo-router';
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately
@@ -9,7 +8,7 @@ import App from './App';
 function Root() {
     return (
       <CartProvider>
-        <App />
+        <Router />
       </CartProvider>
     );
   }
