@@ -11,6 +11,8 @@ local.properties
 *.iml
 *.hprof
 
+.env
+
 # BUCK
 buck-out/
 \.buckd/
